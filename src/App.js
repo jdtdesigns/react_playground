@@ -5,56 +5,58 @@ import Header from './components/Header';
 function App() {
   const logo = 'Turtle App';
   const [turtles, setTurtles] = useState([]);
-  const [turtleType, setTurtleType] = useState('');
-  const [turtleColor, setTurtleColor] = useState('');
+  const [formState, setFormState] = useState({
+    turtleType: '',
+    turtleColor: ''
+  });
 
   const handleSubmit = (eventObj) => {
     eventObj.preventDefault();
 
-    // const newTurts = [...turtles];
-
-    // newTurts.push({
-    //   type: turtleType,
-    //   color: turtleColor
-    // });
-
-    // setTurtles(newTurts);
-
     setTurtles([...turtles, {
-      type: turtleType,
-      color: turtleColor
+      ...formState
     }]);
 
-    setTurtleType('');
-    setTurtleColor('');
+    setFormState({
+      turtleType: '',
+      turtleColor: ''
+    });
   }
 
-  const handleTypeChange = (eventObj) => {
-    setTurtleType(eventObj.target.value);
-  }
+  const handleChange = (eventObj) => {
+    const prop = eventObj.target.name;
 
-  const handleColorChange = (eventObj) => {
-    setTurtleColor(eventObj.target.value);
+    setFormState({
+      ...formState,
+      [prop]: eventObj.target.value
+    });
   }
 
   return (
     <>
       <Header logo={logo} />
 
-      <p>Type: {turtleType}</p>
-      <p>Color: {turtleColor}</p>
-
       <form onSubmit={handleSubmit}>
-        <input value={turtleType} onChange={handleTypeChange} type="text" placeholder="Enter turtle type" />
-        <input value={turtleColor} onChange={handleColorChange} type="text" placeholder="Enter turtle color" />
+        <input
+          name="turtleType"
+          value={formState.turtleType}
+          onChange={handleChange}
+          type="text"
+          placeholder="Enter turtle type" />
+        <input
+          name="turtleColor"
+          value={formState.turtleColor}
+          onChange={handleChange}
+          type="text"
+          placeholder="Enter turtle color" />
         <button>Add Turtle</button>
       </form>
 
 
       {turtles.map((turtleObj, index) => (
         <div key={index} className="turtle">
-          <h3>Type: {turtleObj.type}</h3>
-          <p>Color: {turtleObj.color}</p>
+          <h3>Type: {turtleObj.turtleType}</h3>
+          <p>Color: {turtleObj.turtleColor}</p>
         </div>
       ))}
 
