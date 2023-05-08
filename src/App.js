@@ -1,14 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './components/Header';
 
+const apiURL = 'https://swapi.dev/api/people';
 
 function App() {
   const logo = 'Turtle App';
+  const [characters, setCharacters] = useState([]);
   const [turtles, setTurtles] = useState([]);
   const [formState, setFormState] = useState({
     turtleType: '',
     turtleColor: ''
   });
+
+  useEffect(() => {
+    fetch(apiURL)
+      .then(res => res.json())
+      .then(data => {
+        console.log('retrieved');
+        setCharacters(data.results);
+      })
+  }, []);
 
   const handleSubmit = (eventObj) => {
     eventObj.preventDefault();
@@ -57,6 +68,13 @@ function App() {
         <div key={index} className="turtle">
           <h3>Type: {turtleObj.turtleType}</h3>
           <p>Color: {turtleObj.turtleColor}</p>
+        </div>
+      ))}
+
+      {characters.map((charObj, index) => (
+        <div key={index} className="character">
+          <h3>Name: {charObj.name}</h3>
+          <p>Eye Color: {charObj.eye_color}</p>
         </div>
       ))}
 
