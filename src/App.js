@@ -12,6 +12,8 @@ function App() {
     turtleColor: ''
   });
 
+  const [characterInput, setCharacterInput] = useState('');
+
   useEffect(() => {
     fetch(apiURL)
       .then(res => res.json())
@@ -20,6 +22,22 @@ function App() {
         setCharacters(data.results);
       })
   }, []);
+
+  const handleCharacterSubmit = (eventObj) => {
+    eventObj.preventDefault();
+
+    const searchUrl = `https://swapi.dev/api/people/?search=${characterInput}`;
+
+    fetch(searchUrl)
+      .then(res => res.json())
+      .then(data => {
+        setCharacters(data.results);
+      });
+  };
+
+  const handleCharacterChange = (eventObj) => {
+    setCharacterInput(eventObj.target.value);
+  };
 
   const handleSubmit = (eventObj) => {
     eventObj.preventDefault();
@@ -63,6 +81,16 @@ function App() {
         <button>Add Turtle</button>
       </form>
 
+      <form onSubmit={handleCharacterSubmit}>
+        <h2>Starwars Search</h2>
+        <input
+          value={characterInput}
+          onChange={handleCharacterChange}
+          type="text"
+          placeholder="Enter Character Name" />
+        <button>Search for Character</button>
+      </form>
+
 
       {turtles.map((turtleObj, index) => (
         <div key={index} className="turtle">
@@ -77,6 +105,8 @@ function App() {
           <p>Eye Color: {charObj.eye_color}</p>
         </div>
       ))}
+
+      {!characters.length && <p>Starwars data loading...</p>}
 
       {/* If the turtles array has no length, show a paragraph */}
       {!turtles.length && <p>No Turts Have Been Added.</p>}
