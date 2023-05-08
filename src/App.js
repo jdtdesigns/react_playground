@@ -1,51 +1,13 @@
 import { useState } from 'react';
 import Header from './components/Header';
-import Footer from './components/Footer';
 
-const data = [
-  {
-    name: 'JD',
-    age: 43
-  },
-  {
-    name: 'Bob',
-    age: 99
-  },
-  {
-    name: 'Susan',
-    age: 35
-  },
-  {
-    name: 'Jane',
-    age: 25
-  }
-];
 
 function App() {
   const logo = 'Turtle App';
-  const [count, setCount] = useState(0);
-  const [show, setShow] = useState(true);
-
-  const toggleShow = () => {
-    setShow(!show);
-  }
 
   return (
     <>
-      <Header show={show} logo={logo} another={'some other val'} />
-
-      {show && (
-        <>
-          <h1>Welcome to our app. Let's learn about turtles!</h1>
-          <p>Another paragraph</p>
-        </>
-      )}
-
-      {show && <h1>Count: {count}</h1>}
-
-      <button onClick={toggleShow}>Toggle Show</button>
-
-      {show && <Footer logo={logo} />}
+      <Header logo={logo} />
     </>
   );
 }
