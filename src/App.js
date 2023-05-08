@@ -24,6 +24,9 @@ function App() {
       type: turtleType,
       color: turtleColor
     }]);
+
+    setTurtleType('');
+    setTurtleColor('');
   }
 
   const handleTypeChange = (eventObj) => {
@@ -42,8 +45,8 @@ function App() {
       <p>Color: {turtleColor}</p>
 
       <form onSubmit={handleSubmit}>
-        <input onChange={handleTypeChange} type="text" placeholder="Enter turtle type" />
-        <input onChange={handleColorChange} type="text" placeholder="Enter turtle color" />
+        <input value={turtleType} onChange={handleTypeChange} type="text" placeholder="Enter turtle type" />
+        <input value={turtleColor} onChange={handleColorChange} type="text" placeholder="Enter turtle color" />
         <button>Add Turtle</button>
       </form>
 
