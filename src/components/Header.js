@@ -14,6 +14,11 @@ function Header(propsObj) {
   return (
     <header style={styles.header}>
       <h3 style={styles.h3}>{propsObj.logo} &#128034;</h3>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+      </nav>
     </header>
   )
 }

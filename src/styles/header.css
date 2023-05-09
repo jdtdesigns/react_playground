@@ -1,5 +1,7 @@
 header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: #777;
   color: #fff;
 }
@@ -7,3 +9,13 @@ header {
 header h3 {
   color: #fff;
 }
+
+header nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header nav a:not(:last-child) {
+  margin-right: 7px;
+}
+
