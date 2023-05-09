@@ -10,3 +10,10 @@ body {
 /* .people div:nth-child(even) {
   background-color: #aaa;
 } */
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}

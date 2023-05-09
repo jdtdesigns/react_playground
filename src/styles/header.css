@@ -1,0 +1,9 @@
+header {
+  display: flex;
+  background: #777;
+  color: #fff;
+}
+
+header h3 {
+  color: #fff;
+}
