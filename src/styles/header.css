@@ -19,3 +19,7 @@ header nav a:not(:last-child) {
   margin-right: 7px;
 }
 
+header nav a.active {
+  text-decoration: underline;
+}
+

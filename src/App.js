@@ -18,7 +18,14 @@ function App() {
 
   return (
     <>
-      <Header logo={logo} />
+      {/* 
+        1. Pass the setPage function to the Header component
+        2. Within the header component, set a click listener on
+          each link to call the setter function and change the page
+          variable accordingly
+       */}
+
+      <Header logo={logo} setThatPage={setPage} />
 
       {showPage()}
     </>

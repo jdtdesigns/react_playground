@@ -16,8 +16,8 @@ function Header(propsObj) {
       <h3 style={styles.h3}>{propsObj.logo} &#128034;</h3>
 
       <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
+        <a href="#" onClick={() => propsObj.setThatPage('home')}>Home</a>
+        <a href="#" onClick={() => propsObj.setThatPage('about')}>About</a>
       </nav>
     </header>
   )
