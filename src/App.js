@@ -5,7 +5,7 @@ import About from './pages/About';
 
 function App() {
   const logo = 'Turtle App';
-  const [page, setPage] = useState('about');
+  const [page, setPage] = useState('home');
 
   const showPage = () => {
     switch (page) {
@@ -25,7 +25,7 @@ function App() {
           variable accordingly
        */}
 
-      <Header logo={logo} setThatPage={setPage} />
+      <Header page={page} logo={logo} setThatPage={setPage} />
 
       {showPage()}
     </>

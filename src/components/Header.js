@@ -16,8 +16,14 @@ function Header(propsObj) {
       <h3 style={styles.h3}>{propsObj.logo} &#128034;</h3>
 
       <nav>
-        <a href="#" onClick={() => propsObj.setThatPage('home')}>Home</a>
-        <a href="#" onClick={() => propsObj.setThatPage('about')}>About</a>
+        <a
+          className={propsObj.page === 'home' ? 'active' : ''}
+          href="#"
+          onClick={() => propsObj.setThatPage('home')}>Home</a>
+        <a
+          className={propsObj.page === 'about' ? 'active' : ''}
+          href="#"
+          onClick={() => propsObj.setThatPage('about')}>About</a>
       </nav>
     </header>
   )
